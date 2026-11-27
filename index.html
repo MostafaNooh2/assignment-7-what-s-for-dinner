@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What's For Dinner</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="css/all.min.css" />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header bg-white">
+      <div class="container px-4 py-3">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center header-brand-row">
+            <span
+              class="brand-icon d-flex align-items-center justify-content-center"
+              ><i class="fa-solid fa-utensils"></i
+            ></span>
+            <div class="d-flex flex-column">
+              <h1 class="brand-name m-0">What's For Dinner</h1>
+              <p class="brand-tagline m-0">Your daily meal inspiration</p>
+            </div>
+          </div>
+
+          <div class="d-none md:d-flex align-items-center header-nav">
+            <button
+              class="header-btn bg-transparent border-0 p-0"
+              type="button"
+              title="Saved recipes"
+            >
+              <i class="fa-solid fa-bookmark"></i>
+            </button>
+            <button
+              class="header-btn bg-transparent border-0 p-0"
+              type="button"
+              title="Recent"
+            >
+              <i class="fa-solid fa-clock-rotate-left"></i>
+            </button>
+            <button
+              class="header-btn bg-transparent border-0 p-0"
+              type="button"
+              title="Settings"
+            >
+              <i class="fa-solid fa-gear"></i>
+            </button>
+            <img
+              class="header-avatar rounded-circle object-fit-cover"
+              src="images/avatar.jpg"
+              alt="Profile"
+              onerror="this.style.display = 'none'"
+            />
+          </div>
+
+          <button
+            id="mobile-menu-btn"
+            class="header-menu md:d-none border-0 bg-transparent"
+            type="button"
+            title="Menu"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+
+        <div
+          id="mobile-menu"
+          class="mobile-menu d-none md:d-none mt-3 pt-3 pb-3"
+        >
+          <div class="d-flex flex-column gap-3">
+            <button
+              type="button"
+              class="d-flex align-items-center text-start bg-transparent border-0 p-0"
+            >
+              <i class="fa-solid fa-bookmark"></i><span>Saved Recipes</span>
+            </button>
+            <button
+              type="button"
+              class="d-flex align-items-center text-start bg-transparent border-0 p-0"
+            >
+              <i class="fa-solid fa-clock-rotate-left"></i><span>Recent</span>
+            </button>
+            <button
+              type="button"
+              class="d-flex align-items-center text-start bg-transparent border-0 p-0"
+            >
+              <i class="fa-solid fa-gear"></i><span>Settings</span>
+            </button>
+            <button
+              type="button"
+              class="d-flex align-items-center text-start bg-transparent border-0 p-0"
+            >
+              <img
+                class="mobile-avatar rounded-circle"
+                src="images/avatar.jpg"
+                alt="Profile"
+                onerror="this.style.display = 'none'"
+              /><span>Profile</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container page">
+      <section
+        id="recipe-display-section"
+        class="recipe-card row g-0 overflow-hidden bg-white"
+      >
+        <div class="recipe-media position-relative lg:col-5">
+          <img
+            id="recipe-image"
+            class="position-absolute w-100 h-100"
+            src="images/caprese-sandwich.jpg"
+            alt="Recipe photo"
+          />
+
+          <div
+            class="rating-badge position-absolute d-flex align-items-center gap-2 bg-white rounded-pill"
+          >
+            <i class="fa-solid fa-star"></i>
+            <span id="rating-average" class="rating-average">4.8</span>
+            <span id="rating-quantity" class="rating-quantity"
+              >(234 reviews)</span
+            >
+          </div>
+
+          <div
+            class="stats-panel position-absolute row row-cols-3 g-3 text-center"
+          >
+            <div class="col d-flex flex-column align-items-center">
+              <i class="fa-solid fa-clock stat-icon icon-orange"></i>
+              <p class="stat-label m-0">Prep Time</p>
+              <p class="stat-value m-0 fw-bold" id="prep-time-display">
+                15 min
+              </p>
+            </div>
+            <div class="col d-flex flex-column align-items-center">
+              <i class="fa-solid fa-fire-burner stat-icon icon-red"></i>
+              <p class="stat-label m-0">Cook Time</p>
+              <p class="stat-value m-0 fw-bold" id="cook-time-display">
+                20 min
+              </p>
+            </div>
+            <div class="col d-flex flex-column align-items-center">
+              <i class="fa-solid fa-users stat-icon icon-blue"></i>
+              <p class="stat-label m-0">Servings</p>
+              <p class="stat-value m-0 fw-bold" id="servings-display">
+                4 people
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="recipe-content lg:col-7">
+          <div
+            class="title-row d-flex flex-column-reverse md:flex-row justify-content-between align-items-start"
+          >
+            <div>
+              <div class="badges-row d-flex align-items-center">
+                <span id="difficulty-badge" class="badge-difficulty">Easy</span>
+                <span id="category-badge" class="badge-category">Italian</span>
+              </div>
+              <h3 id="recipe-name" class="recipe-name fw-bold">Recipe name</h3>
+              <p id="recipe-description" class="recipe-description mb-0">
+                Recipe description
+              </p>
+            </div>
+            <div
+              class="d-flex gap-2 align-self-end md:align-self-center flex-shrink-0"
+            >
+              <button
+                class="action-btn d-flex align-items-center justify-content-center border-0"
+                type="button"
+                title="Save recipe"
+              >
+                <i class="fa-solid fa-bookmark"></i>
+              </button>
+              <button
+                class="action-btn d-flex align-items-center justify-content-center border-0"
+                type="button"
+                title="Share"
+              >
+                <i class="fa-solid fa-share-nodes"></i>
+              </button>
+            </div>
+          </div>
+
+          <div
+            id="time-warning"
+            class="time-warning d-flex align-items-center d-none"
+          >
+            <i class="fa-solid fa-triangle-exclamation flex-shrink-0"></i>
+            <div>
+              <p class="warning-title m-0">Extended Preparation Time</p>
+              <p class="warning-text m-0">
+                This recipe requires more than 45 minutes to prepare. Plan
+                accordingly!
+              </p>
+            </div>
+          </div>
+
+          <div class="tab-strip">
+            <div class="tab-buttons">
+              <button
+                class="tab-button active d-flex align-items-center justify-content-center bg-transparent text-nowrap"
+                data-tab="ingredients"
+                type="button"
+              >
+                <i class="fa-solid fa-list-check flex-shrink-0"></i
+                ><span class="tab-label">Ingredients</span>
+              </button>
+              <button
+                class="tab-button d-flex align-items-center justify-content-center bg-transparent text-nowrap"
+                data-tab="instructions"
+                type="button"
+              >
+                <i class="fa-solid fa-book-open flex-shrink-0"></i
+                ><span class="tab-label">Instructions</span>
+              </button>
+              <button
+                class="tab-button d-flex align-items-center justify-content-center bg-transparent text-nowrap"
+                data-tab="nutrition"
+                type="button"
+              >
+                <i class="fa-solid fa-chart-pie flex-shrink-0"></i
+                ><span class="tab-label">Nutrition</span>
+              </button>
+              <button
+                class="tab-button d-flex align-items-center justify-content-center bg-transparent text-nowrap"
+                data-tab="tips"
+                type="button"
+              >
+                <i class="fa-solid fa-lightbulb flex-shrink-0"></i
+                ><span class="tab-label">Chef's Tips</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="tab-content" id="ingredients-tab">
+            <div class="ingredients-panel">
+              <ul
+                id="ingredients-list"
+                class="ingredients-list list-unstyled mb-0"
+              ></ul>
+            </div>
+          </div>
+
+          <div class="tab-content d-none" id="instructions-tab">
+            <div id="instructions-list" class="instructions-list"></div>
+          </div>
+
+          <div class="tab-content d-none" id="nutrition-tab">
+            <div class="row row-cols-1 md:row-cols-2 g-3">
+              <div class="col">
+                <div
+                  class="nutrition-card h-100 d-flex align-items-center justify-content-between"
+                >
+                  <div class="nutrition-left d-flex align-items-center">
+                    <span
+                      class="nutrition-icon d-flex align-items-center justify-content-center ni-calories"
+                      ><i class="fa-solid fa-fire"></i
+                    ></span>
+                    <span class="nutrition-label">Calories</span>
+                  </div>
+                  <span class="nutrition-value" id="calories-value">-</span>
+                </div>
+              </div>
+              <div class="col">
+                <div
+                  class="nutrition-card h-100 d-flex align-items-center justify-content-between"
+                >
+                  <div class="nutrition-left d-flex align-items-center">
+                    <span
+                      class="nutrition-icon d-flex align-items-center justify-content-center ni-protein"
+                      ><i class="fa-solid fa-dumbbell"></i
+                    ></span>
+                    <span class="nutrition-label">Protein</span>
+                  </div>
+                  <span class="nutrition-value" id="protein-value">-</span>
+                </div>
+              </div>
+              <div class="col">
+                <div
+                  class="nutrition-card h-100 d-flex align-items-center justify-content-between"
+                >
+                  <div class="nutrition-left d-flex align-items-center">
+                    <span
+                      class="nutrition-icon d-flex align-items-center justify-content-center ni-carbs"
+                      ><i class="fa-solid fa-wheat-awn"></i
+                    ></span>
+                    <span class="nutrition-label">Carbohydrates</span>
+                  </div>
+                  <span class="nutrition-value" id="carbs-value">-</span>
+                </div>
+              </div>
+              <div class="col">
+                <div
+                  class="nutrition-card h-100 d-flex align-items-center justify-content-between"
+                >
+                  <div class="nutrition-left d-flex align-items-center">
+                    <span
+                      class="nutrition-icon d-flex align-items-center justify-content-center ni-fat"
+                      ><i class="fa-solid fa-droplet"></i
+                    ></span>
+                    <span class="nutrition-label">Fat</span>
+                  </div>
+                  <span class="nutrition-value" id="fat-value">-</span>
+                </div>
+              </div>
+              <div class="col">
+                <div
+                  class="nutrition-card h-100 d-flex align-items-center justify-content-between"
+                >
+                  <div class="nutrition-left d-flex align-items-center">
+                    <span
+                      class="nutrition-icon d-flex align-items-center justify-content-center ni-fiber"
+                      ><i class="fa-solid fa-seedling"></i
+                    ></span>
+                    <span class="nutrition-label">Fiber</span>
+                  </div>
+                  <span class="nutrition-value" id="fiber-value">-</span>
+                </div>
+              </div>
+              <div class="col">
+                <div
+                  class="nutrition-card h-100 d-flex align-items-center justify-content-between"
+                >
+                  <div class="nutrition-left d-flex align-items-center">
+                    <span
+                      class="nutrition-icon d-flex align-items-center justify-content-center ni-sodium"
+                      ><i class="fa-solid fa-cube"></i
+                    ></span>
+                    <span class="nutrition-label">Sodium</span>
+                  </div>
+                  <span class="nutrition-value" id="sodium-value">-</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content d-none" id="tips-tab">
+            <div id="tips-list" class="tips-list"></div>
+          </div>
+
+          <div class="try-wrap d-flex align-items-center">
+            <button
+              id="try-another-btn"
+              class="try-another-btn border-0"
+              type="button"
+            >
+              <i class="fa-solid fa-rotate"></i>Try Another Recipe
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
